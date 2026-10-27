@@ -114,10 +114,15 @@
       width: 20px;
       height: 20px;
     }
-    .store-badge-link .icon {
-      width: 26px;
-      height: 26px;
+    .store-badge-link .store-badge-logo {
+      width: 30px;
+      height: 30px;
+      display: block;
+      flex: 0 0 30px;
+      object-fit: contain;
     }
+    .store-badge-link .app-store-logo { border-radius: 7px; }
+    .store-badge-link .play-store-logo { clip-path: polygon(11% 4%, 100% 50%, 11% 96%, 0 92%, 0 8%); }
     .social-links .icon {
       width: 15px;
       height: 15px;
@@ -1529,6 +1534,47 @@
     @media (prefers-reduced-motion: reduce) {
       .app-promo-section::after { animation: none !important; }
     }
+    /* ---------- Lost & Found ---------- */
+    .lost-found-section { padding: 78px 0; background: linear-gradient(135deg, #F0F9FF, #F8FAFC 55%, #FFF7ED); border-block: 1px solid var(--border-color); }
+    .lf-heading { max-width: 760px; margin: 0 auto 28px; text-align: center; }
+    .lf-heading h2 { font: 700 clamp(28px, 4vw, 40px)/1.15 var(--font-title); color: var(--color-navy); margin: 10px 0; }
+    .lf-heading p { color: var(--text-medium); }
+    .lf-layout { display: grid; grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr); gap: 22px; align-items: start; }
+    .lf-panel { background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-md); }
+    .lf-panel h3 { color: var(--color-navy); font: 700 20px var(--font-title); margin-bottom: 6px; }
+    .lf-subtext { color: var(--text-light); font-size: 13px; margin-bottom: 18px; }
+    .lf-form { display: grid; gap: 13px; }
+    .lf-field { display: grid; gap: 6px; }
+    .lf-field label { color: var(--text-dark); font-size: 13px; font-weight: 700; }
+    .lf-field input, .lf-field select, .lf-field textarea, .lf-search { width: 100%; border: 1px solid #CBD5E1; border-radius: 9px; padding: 11px 12px; color: var(--text-dark); background: #fff; font: 500 14px var(--font-body); }
+    .lf-field textarea { resize: vertical; min-height: 88px; }
+    .lf-field input:focus, .lf-field select:focus, .lf-field textarea:focus, .lf-search:focus { outline: 3px solid rgba(2,132,199,.18); border-color: var(--color-cyan); }
+    .lf-photo-help, .lf-privacy { color: var(--text-light); font-size: 11px; line-height: 1.5; }
+    .lf-ai-tip { display: none; border-radius: 10px; padding: 11px 13px; color: #4C1D95; background: var(--color-purple-light); font-size: 13px; }
+    .lf-ai-tip.is-visible { display: block; }
+    .lf-dropzone { min-height: 142px; border: 2px dashed #94A3B8; border-radius: 12px; background: #F8FAFC; display: grid; place-items: center; padding: 12px; text-align: center; color: var(--text-medium); cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+    .lf-dropzone:hover, .lf-dropzone.is-dragging { border-color: var(--color-cyan); background: #F0F9FF; transform: scale(1.01); }
+    .lf-dropzone-copy strong { display: block; color: var(--color-navy); font-size: 14px; }
+    .lf-dropzone-copy span { display: block; margin-top: 4px; font-size: 12px; }
+    .lf-photo-preview { display: block; max-width: 100%; max-height: 210px; object-fit: contain; border-radius: 8px; }
+    .lf-photo-preview[hidden] { display: none; }
+    .lf-dropzone.has-photo { padding: 8px; }
+    .lf-ai-tip .lf-live-hit { display: block; margin-top: 7px; padding-top: 7px; border-top: 1px solid rgba(124,58,237,.2); }
+    .lf-submit { border: 0; border-radius: 999px; padding: 12px 18px; color: #fff; background: var(--color-navy); font: 700 14px var(--font-body); cursor: pointer; }
+    .lf-submit:hover { background: var(--color-blue); }
+    .lf-message { min-height: 20px; color: var(--color-blue); font-size: 13px; }
+    .lf-toolbar { display: flex; gap: 10px; margin: 14px 0 16px; }
+    .lf-feed { display: grid; gap: 12px; }
+    .lf-empty { padding: 26px 16px; text-align: center; border: 1px dashed #CBD5E1; border-radius: 12px; color: var(--text-light); font-size: 14px; }
+    .lf-card { display: grid; grid-template-columns: 104px minmax(0,1fr); gap: 14px; padding: 12px; border: 1px solid var(--border-color); border-radius: 13px; background: #fff; }
+    .lf-card img { width: 104px; height: 104px; object-fit: cover; border-radius: 9px; background: #F1F5F9; }
+    .lf-card h4 { margin: 4px 0; color: var(--color-navy); font: 700 16px var(--font-title); }
+    .lf-card p { color: var(--text-medium); font-size: 12px; margin-top: 3px; overflow-wrap: anywhere; }
+    .lf-badge { display: inline-block; padding: 3px 9px; border-radius: 99px; color: #075985; background: var(--color-cyan-light); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+    .lf-badge.is-lost { color: #9A3412; background: var(--color-orange-light); }
+    .lf-match { margin-top: 9px; padding: 9px 10px; border-radius: 9px; color: #166534; background: var(--color-green-light); font-size: 12px; }
+    @media (max-width: 760px) { .lf-layout { grid-template-columns: 1fr; } .lost-found-section { padding: 54px 0; } }
+    @media (max-width: 430px) { .lf-panel { padding: 17px; } .lf-card { grid-template-columns: 76px minmax(0,1fr); gap: 10px; } .lf-card img { width: 76px; height: 76px; } .lf-toolbar { flex-direction: column; } }
     .app-feature-list li {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.16);
@@ -1554,6 +1600,77 @@
       background: radial-gradient(circle at 30% 20%, rgba(2, 132, 199, 0.35), rgba(2, 132, 199, 0) 65%);
       filter: blur(20px);
       z-index: -1;
+    }
+
+    /* Mobile layout refinements: keep the school portal readable without pinching or horizontal overflow. */
+    @media (max-width: 768px) {
+      .container { width: 100%; padding-inline: 18px; }
+      .top-bar-flex, .ticker-wrapper { min-width: 0; }
+      .ticker-wrapper { flex: 1 1 auto; }
+      .ticker-text { overflow: hidden; text-overflow: ellipsis; }
+      .nav-wrapper { flex-direction: column; align-items: stretch; gap: 6px; padding: 8px 0; }
+      .brand-logo-group { min-width: 0; gap: 10px; }
+      .brand-logo-img { height: 48px; flex: 0 0 auto; }
+      .brand-title-box { min-width: 0; }
+      .brand-title-box h1 { font-size: clamp(13px, 3.5vw, 17px); overflow-wrap: anywhere; }
+      .brand-title-box p { font-size: 9px; letter-spacing: .6px; }
+      .nav-menu { display: flex; width: 100%; gap: 18px; overflow-x: auto; padding: 7px 0 4px; scrollbar-width: thin; }
+      .nav-menu li, .nav-menu a { flex: 0 0 auto; white-space: nowrap; font-size: 13px; }
+      .hero-grid { gap: 26px; }
+      .hero-copy { min-width: 0; }
+      .hero-heading { font-size: clamp(30px, 6vw, 40px); overflow-wrap: anywhere; }
+      .hero-desc { font-size: 15px; }
+      .hero-media { width: min(100%, 620px); margin-inline: auto; }
+      .services-hub { margin-top: -20px; }
+      .lf-layout { min-width: 0; }
+      .lf-panel { min-width: 0; }
+      .lf-field input, .lf-field select, .lf-field textarea, .lf-search { min-width: 0; font-size: 16px; }
+      .lf-card { min-width: 0; }
+      .lf-card > div { min-width: 0; }
+      .lf-match { overflow-wrap: anywhere; }
+      .leadership-box { padding: 26px; }
+    }
+    @media (max-width: 480px) {
+      .container { padding-inline: 14px; }
+      .top-bar { font-size: 11px; }
+      .ticker-tag { padding-inline: 7px; font-size: 9px; }
+      .hero { padding-block: 28px 48px; }
+      .hero-heading { font-size: clamp(27px, 8vw, 34px); line-height: 1.12; }
+      .hero-copy .badge-pill { max-width: 100%; white-space: normal; font-size: 10px; }
+      .hero-card-floating { transform: scale(.88); transform-origin: left bottom; }
+      .hero-card-floating.top-right { transform-origin: right top; }
+      .services-grid { gap: 10px; }
+      .service-card, .service-card-stack { flex: 1 1 calc(50% - 5px); max-width: none; min-width: 0; }
+      .service-card { min-height: 112px; padding: 14px 9px; }
+      .service-card-stack .service-card { width: 100%; }
+      .service-title { font-size: 12px; overflow-wrap: anywhere; }
+      .section { padding-block: 48px; }
+      .app-promo-section { padding: 46px 0; }
+      .app-feature-list { gap: 9px; }
+      .store-badges { gap: 8px; }
+      .store-badge-link { gap: 8px; padding: 9px 11px; }
+      .store-badge-text strong { font-size: 13px; }
+      .store-badge-text small { font-size: 9px; }
+      .leadership-box { padding: 20px 16px; }
+      .lf-panel { padding: 16px; }
+      .lf-toolbar { flex-direction: column; }
+      .lf-card { grid-template-columns: 68px minmax(0, 1fr); gap: 9px; padding: 9px; }
+      .lf-card img { width: 68px; height: 68px; }
+      .lf-card h4 { font-size: 14px; }
+      .lf-card p { font-size: 11px; }
+      .lf-dropzone { min-height: 126px; }
+      .footer-grid { gap: 24px; }
+    }
+    @media (max-width: 360px) {
+      .container { padding-inline: 12px; }
+      .brand-logo-img { height: 42px; }
+      .brand-logo-group { gap: 8px; }
+      .brand-title-box h1 { font-size: 12px; }
+      .hero-heading { font-size: 27px; }
+      .service-icon { width: 40px; height: 40px; }
+      .lf-panel { padding: 13px; }
+      .lf-card { grid-template-columns: 58px minmax(0, 1fr); gap: 8px; }
+      .lf-card img { width: 58px; height: 58px; }
     }
   </style>
 </head>
@@ -1592,8 +1709,13 @@
       <symbol id="i-document" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></g></symbol>
       <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c2-1.3 5-1.3 8 0v14c-3-1.3-6-1.3-8 0z"/><path d="M20 5c-2-1.3-5-1.3-8 0v14c3-1.3 6-1.3 8 0z"/></g></symbol>
       <symbol id="i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 4 1.5 5.5 2 6H4c.5-.5 2-2 2-6z"/><path d="M10 20a2 2 0 0 0 4 0"/></g></symbol>
-      <symbol id="i-playbadge" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3l14 9-14 9V3z"/></symbol>
-      <symbol id="i-applebadge" viewBox="0 0 24 24"><path fill="currentColor" d="M15.7 12.7c0-2.7 2.2-4 2.3-4.1-1.3-1.8-3.2-2.1-3.9-2.1-1.7-.2-3.2 1-4.1 1-.8 0-2.1-1-3.5-1C4.7 6.6 3 8.2 3 11.3c0 1.3.2 2.7.7 4 .7 1.9 3.1 6.5 5.6 6.4 1.3 0 2.2-.9 3.8-.9 1.6 0 2.4.9 3.8.9 2.5 0 4.6-4.2 5.3-6.1-3.4-1.6-3.5-4.6-3.5-4.9zM13.2 4.5c1-1.2 1.7-2.9 1.5-4.5-1.5.1-3.2 1-4.2 2.2-.9 1.1-1.7 2.8-1.5 4.4 1.6.1 3.2-.9 4.2-2.1z"/></symbol>
+      <symbol id="i-playbadge" viewBox="0 0 48 48">
+        <path fill="#34A853" d="M5.4 3.8 28 24 5.4 44.2c-.8-.7-1.3-1.8-1.3-3.3V7.1c0-1.5.5-2.6 1.3-3.3z"/>
+        <path fill="#4285F4" d="m5.4 3.8 27.4 15.6-8.2 7.3L5.4 3.8z"/>
+        <path fill="#EA4335" d="m32.8 19.4 8.1 4.6c2 1.1 2 2.9 0 4l-8.1 4.6-8.2-7.3 8.2-5.9z"/>
+        <path fill="#FBBC04" d="m5.4 44.2 27.4-15.6-8.2-7.3L5.4 44.2z"/>
+      </symbol>
+      <symbol id="i-applebadge" viewBox="0 0 24 24"><path fill="currentColor" d="M17.05 20.28c-.96.95-1.96.94-2.92.94-1.02 0-1.84-.43-2.82-.43-.98 0-1.85.43-2.82.43-.97 0-1.95-.03-2.92-.99-2.94-2.91-3.37-7.69-.64-10.65 1.38-1.5 3.24-2.17 5.1-2.17 1.04 0 2 .35 2.8.35.8 0 1.72-.35 2.8-.35 1.4 0 2.83.56 4.08 1.75-3.6 2.04-3.02 7.12.36 8.53-.62 1.1-1.31 2.13-2.02 2.59zM15.4 5.1c.8-.96 1.39-2.3 1.24-3.62-1.2.08-2.62.87-3.48 1.86-.8.91-1.47 2.3-1.28 3.62 1.33.1 2.68-.69 3.52-1.86z"/></symbol>
       <symbol id="i-social-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M15 3h-2.5C10 3 8.5 4.6 8.5 7.3V10H6v3.5h2.5V21h3.6v-7.5H15l.5-3.5h-3.4V7.6c0-1 .3-1.7 1.7-1.7H15V3z"/></symbol>
       <symbol id="i-social-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></g></symbol>
       <symbol id="i-social-yt" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor"/><path fill="#0B2545" d="M10 8.5l6 3.5-6 3.5z"/></symbol>
@@ -1636,6 +1758,7 @@
           <li><a href="#campuses">Campuses</a></li>
           <li><a href="#academics">Academics</a></li>
           <li><a href="#notices">Notices</a></li>
+          <li><a href="#lost-found">Lost &amp; Found</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -1705,6 +1828,11 @@
         <div class="service-icon ic-purple"><svg class="icon" aria-hidden="true"><use href="#i-bot"></use></svg></div>
         <span class="service-title">ICSK AI</span>
       </a>
+      <a href="#lost-found" class="service-card" aria-label="Open Lost and Found">
+        <span class="redirect-badge ai-badge"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg></span>
+        <div class="service-icon ic-orange"><svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg></div>
+        <span class="service-title">Lost &amp; Found</span>
+      </a>
       <a href="#" class="service-card" data-module-title="Circulars" data-module-desc="View and download the latest circulars, notices, and official school communications." data-module-icon="i-clipboard" data-module-url="https://icsk-kw.com/circulars">
         <span class="redirect-badge"><svg class="icon" aria-hidden="true"><use href="#i-external"></use></svg></span>
         <div class="service-icon ic-navy"><svg class="icon" aria-hidden="true"><use href="#i-clipboard"></use></svg></div>
@@ -1722,6 +1850,40 @@
       </a>
     </div>
   </div>
+
+  <!-- LOST & FOUND -->
+  <section class="lost-found-section" id="lost-found" hidden>
+    <div class="container">
+      <div class="lf-heading">
+        <span class="badge-pill"><svg class="icon" aria-hidden="true"><use href="#i-sparkle"></use></svg> Smart campus helper</span>
+        <h2>Lost something? Found something?</h2>
+        <p>Post a clear description, where it was found, your class and section, and a photo. The smart helper suggests a category and looks for similar reports on this device.</p>
+      </div>
+      <div class="lf-layout">
+        <div class="lf-panel">
+          <h3>Share an item report</h3>
+          <p class="lf-subtext">Please don’t include phone numbers, home addresses, or other private details.</p>
+          <form class="lf-form" id="lfForm">
+            <div class="lf-field"><label for="lfType">Report type</label><select id="lfType" required><option value="found">I found an item</option><option value="lost">I lost an item</option></select></div>
+            <div class="lf-field"><label for="lfDescription">Describe the item</label><textarea id="lfDescription" required maxlength="240" placeholder="For example: blue water bottle with a small rocket sticker"></textarea></div>
+            <div class="lf-ai-tip" id="lfAiTip" aria-live="polite"></div>
+            <div class="lf-field"><label for="lfLocation">Where was it found / last seen?</label><input id="lfLocation" required maxlength="100" placeholder="e.g. Library, near the science lab"></div>
+            <div class="lf-field"><label for="lfClass">Class and section</label><input id="lfClass" required maxlength="40" placeholder="e.g. Class 7, Section B"></div>
+            <div class="lf-field"><label for="lfPhoto">Photo of the item</label><div class="lf-dropzone" id="lfDropzone" role="button" tabindex="0" aria-controls="lfPhoto"><div class="lf-dropzone-copy" id="lfDropCopy"><strong>Drop a photo here or choose a file</strong><span>JPG, PNG or WebP · up to 2 MB</span></div><img class="lf-photo-preview" id="lfPhotoPreview" alt="Preview of selected item photo" hidden></div><input id="lfPhoto" type="file" accept="image/*" aria-label="Choose a photo of the item"><span class="lf-photo-help">Avoid photos showing student faces. Tap the preview to change the photo.</span></div>
+            <button class="lf-submit" type="submit">Post report &amp; check for matches</button>
+            <p class="lf-message" id="lfMessage" role="status" aria-live="polite"></p>
+            <p class="lf-privacy">Prototype note: reports and photos are saved only in this browser on this device. They are not uploaded or visible to other students.</p>
+          </form>
+        </div>
+        <div class="lf-panel">
+          <h3>Item reports</h3>
+          <p class="lf-subtext">Smart matching compares descriptions and locations to suggest possible matches.</p>
+          <div class="lf-toolbar"><input class="lf-search" id="lfSearch" type="search" placeholder="Search reports…" aria-label="Search item reports"><select class="lf-search" id="lfFilter" aria-label="Filter reports"><option value="all">All reports</option><option value="lost">Lost items</option><option value="found">Found items</option></select></div>
+          <div class="lf-feed" id="lfFeed" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- NOTICES & CALENDAR SECTION -->
   <section class="section" id="notices">
@@ -1860,15 +2022,15 @@
           </ul>
 
           <div class="store-badges">
-            <a href="https://icsk-kw.com/icsk-cloud" target="_blank" rel="noopener noreferrer" class="store-badge-link" aria-label="Download the ICSK Cloud app on the App Store">
-              <svg class="icon" aria-hidden="true"><use href="#i-applebadge"></use></svg>
+            <a href="https://apps.apple.com/kw/app/icsk-cloud/id1302799885" target="_blank" rel="noopener noreferrer" class="store-badge-link" aria-label="Download the ICSK Cloud app on the App Store">
+              <img class="store-badge-logo app-store-logo" src="appstore.jpg" alt="Apple App Store logo" width="30" height="30">
               <div class="store-badge-text">
                 <small>Download on the</small>
                 <strong>App Store</strong>
               </div>
             </a>
-            <a href="https://icsk-kw.com/icsk-cloud" target="_blank" rel="noopener noreferrer" class="store-badge-link" aria-label="Get the ICSK Cloud app on Google Play">
-              <svg class="icon" aria-hidden="true"><use href="#i-playbadge"></use></svg>
+            <a href="https://play.google.com/store/apps/details?id=com.campus360.icsk" target="_blank" rel="noopener noreferrer" class="store-badge-link" aria-label="Get the ICSK Cloud app on Google Play">
+              <img class="store-badge-logo play-store-logo" src="PLAYSTORE.jpg" alt="Google Play logo" width="30" height="30">
               <div class="store-badge-text">
                 <small>GET IT ON</small>
                 <strong>Google Play</strong>
@@ -2004,14 +2166,14 @@
         <div class="ai-chat-header-icon"><svg class="icon" aria-hidden="true"><use href="#i-bot"></use></svg></div>
         <div class="ai-chat-header-text">
           <strong id="aiChatTitle">ICSK AI</strong>
-          <span><span class="ai-chat-status-dot"></span> Online &middot; Follows school guidelines</span>
+          <span><span class="ai-chat-status-dot"></span> <span id="aiChatStatus">On-device helper</span></span>
         </div>
         <button type="button" class="ai-chat-close" id="aiChatClose" aria-label="Close ICSK AI">
           <svg class="icon" aria-hidden="true"><use href="#i-social-x"></use></svg>
         </button>
       </div>
       <div class="ai-chat-body" id="aiChatBody"></div>
-      <p class="ai-chat-note">ICSK AI can make mistakes and will not help with anything against school rules.</p>
+      <p class="ai-chat-note">This on-device helper uses built-in school information and your local Lost &amp; Found reports. It does not send your messages anywhere.</p>
       <form class="ai-chat-form" id="aiChatForm">
         <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ask about fees, admissions, transport..." autocomplete="off" maxlength="300" enterkeyhint="send">
         <button type="submit" class="ai-chat-send" id="aiChatSend" aria-label="Send message">
@@ -2119,6 +2281,152 @@
         });
       })();
 
+      /* ---------- 2c. Lost & Found smart helper (local prototype) ---------- */
+      (function initLostFound() {
+        var form = document.getElementById('lfForm');
+        var section = document.getElementById('lost-found');
+        var description = document.getElementById('lfDescription');
+        var tip = document.getElementById('lfAiTip');
+        var typeSelect = document.getElementById('lfType');
+        var locationInput = document.getElementById('lfLocation');
+        var photoInput = document.getElementById('lfPhoto');
+        var dropzone = document.getElementById('lfDropzone');
+        var photoPreview = document.getElementById('lfPhotoPreview');
+        var dropCopy = document.getElementById('lfDropCopy');
+        var feed = document.getElementById('lfFeed');
+        var message = document.getElementById('lfMessage');
+        var search = document.getElementById('lfSearch');
+        var filter = document.getElementById('lfFilter');
+        if (!form || !feed || !section) return;
+        var chosenPhoto = null;
+        var previewUrl = '';
+        document.querySelectorAll('a[href="#lost-found"]').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            section.hidden = false;
+            history.replaceState(null, '', '#lost-found');
+            section.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+          });
+        });
+        var storageKey = 'icskLostFoundReportsV1';
+        var reports = [];
+        try { reports = JSON.parse(localStorage.getItem(storageKey) || '[]'); if (!Array.isArray(reports)) reports = []; } catch (e) { reports = []; }
+        function classify(text) {
+          var t = text.toLowerCase();
+          var groups = [
+            ['Bottle / lunch box', /bottle|flask|lunch|lunchbox|tiffin|container/],
+            ['Book / stationery', /book|notebook|pencil|pen|eraser|ruler|stationery/],
+            ['Clothing', /jacket|sweater|uniform|shirt|shoe|cap|scarf/],
+            ['Electronics', /phone|tablet|earbud|headphone|charger|watch/],
+            ['Bag / personal item', /bag|backpack|wallet|purse|key|glasses/]
+          ];
+          for (var i = 0; i < groups.length; i++) if (groups[i][1].test(t)) return groups[i][0];
+          return 'Personal item';
+        }
+        function words(text) { return (text || '').toLowerCase().match(/[a-z0-9]+/g) || []; }
+        function similarity(a, b) {
+          var aa = words(a), bb = words(b), set = {};
+          aa.forEach(function (w) { if (w.length > 2) set[w] = true; });
+          var total = Object.keys(set).length, hits = 0;
+          bb.forEach(function (w) { if (w.length > 2 && set[w]) { hits++; set[w] = false; } });
+          return total ? hits / Math.max(total, words(b).filter(function (w) { return w.length > 2; }).length, 1) : 0;
+        }
+        function findMatches(report) {
+          return reports.map(function (old) {
+            if (old.type === report.type) return null;
+            var descScore = similarity(report.description, old.description);
+            var locScore = similarity(report.location, old.location);
+            var score = descScore * 0.8 + locScore * 0.2;
+            return score >= 0.22 ? { item: old, score: score } : null;
+          }).filter(Boolean).sort(function (a, b) { return b.score - a.score; }).slice(0, 2);
+        }
+        function updateSmartHelper() {
+          var text = description.value.trim();
+          if (!text) { tip.classList.remove('is-visible'); tip.textContent = ''; return; }
+          tip.textContent = 'Smart suggestion: ' + classify(text) + '.';
+          var draft = { type: typeSelect.value, description: text, location: locationInput.value.trim() };
+          var matches = findMatches(draft);
+          if (matches.length) {
+            var hit = document.createElement('span'); hit.className = 'lf-live-hit';
+            hit.textContent = 'Possible match: ' + matches.map(function (m) { return '“' + m.item.description + '” (' + Math.round(m.score * 100) + '%)'; }).join(' · ');
+            tip.appendChild(hit);
+          } else {
+            var note = document.createElement('span'); note.className = 'lf-live-hit';
+            note.textContent = 'No close opposite report yet. The helper will keep checking as you type.';
+            tip.appendChild(note);
+          }
+          tip.classList.add('is-visible');
+        }
+        function showPhoto(file) {
+          if (!file) return;
+          if (!file.type.match(/^image\//)) { message.textContent = 'Please choose an image file.'; return; }
+          if (file.size > 2 * 1024 * 1024) { message.textContent = 'That photo is over 2 MB. Please choose a smaller image.'; return; }
+          chosenPhoto = file; message.textContent = '';
+          if (previewUrl) URL.revokeObjectURL(previewUrl);
+          previewUrl = URL.createObjectURL(file);
+          photoPreview.src = previewUrl; photoPreview.hidden = false; dropCopy.hidden = true;
+          dropzone.classList.add('has-photo');
+        }
+        photoInput.addEventListener('change', function () { showPhoto(photoInput.files[0]); });
+        dropzone.addEventListener('click', function () { photoInput.click(); });
+        dropzone.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); photoInput.click(); } });
+        ['dragenter', 'dragover'].forEach(function (name) { dropzone.addEventListener(name, function (e) { e.preventDefault(); dropzone.classList.add('is-dragging'); }); });
+        ['dragleave', 'dragend'].forEach(function (name) { dropzone.addEventListener(name, function () { dropzone.classList.remove('is-dragging'); }); });
+        dropzone.addEventListener('drop', function (e) { e.preventDefault(); dropzone.classList.remove('is-dragging'); showPhoto(e.dataTransfer.files[0]); });
+        photoPreview.addEventListener('click', function (e) { e.stopPropagation(); photoInput.click(); });
+        function render() {
+          feed.textContent = '';
+          var query = (search.value || '').trim().toLowerCase();
+          var visible = reports.filter(function (r) {
+            return (filter.value === 'all' || r.type === filter.value) && (!query || [r.description, r.location, r.classSection, r.category].join(' ').toLowerCase().indexOf(query) >= 0);
+          });
+          if (!visible.length) {
+            var empty = document.createElement('div'); empty.className = 'lf-empty';
+            empty.textContent = reports.length ? 'No reports match your search yet.' : 'No reports yet on this device. Add a report to get started.';
+            feed.appendChild(empty); return;
+          }
+          visible.forEach(function (r) {
+            var card = document.createElement('article'); card.className = 'lf-card';
+            var img = document.createElement('img'); img.src = r.photo; img.alt = 'Photo of ' + r.description; card.appendChild(img);
+            var content = document.createElement('div');
+            var badge = document.createElement('span'); badge.className = 'lf-badge' + (r.type === 'lost' ? ' is-lost' : ''); badge.textContent = r.type === 'lost' ? 'Lost' : 'Found'; content.appendChild(badge);
+            var title = document.createElement('h4'); title.textContent = r.description; content.appendChild(title);
+            [[r.category, 'Suggested category'], [r.location, 'Location'], [r.classSection, 'Class & section']].forEach(function (row) {
+              var p = document.createElement('p'); p.textContent = row[0] + ' · ' + row[1]; content.appendChild(p);
+            });
+            (r.matches || []).forEach(function (m) {
+              var match = document.createElement('div'); match.className = 'lf-match'; match.textContent = 'Possible match (' + Math.round(m.score * 100) + '%): “' + m.description + '” — ' + m.location; content.appendChild(match);
+            });
+            card.appendChild(content); feed.appendChild(card);
+          });
+        }
+        description.addEventListener('input', updateSmartHelper);
+        locationInput.addEventListener('input', updateSmartHelper);
+        typeSelect.addEventListener('change', updateSmartHelper);
+        form.addEventListener('submit', function (e) {
+          e.preventDefault(); message.textContent = '';
+          var file = chosenPhoto || photoInput.files[0];
+          if (!file || !file.type.match(/^image\//)) { message.textContent = 'Please choose an image for the item.'; return; }
+          if (file.size > 2 * 1024 * 1024) { message.textContent = 'That photo is over 2 MB. Please choose a smaller image.'; return; }
+          var reader = new FileReader();
+          reader.onload = function () {
+            var report = { id: Date.now(), type: document.getElementById('lfType').value, description: description.value.trim(), location: document.getElementById('lfLocation').value.trim(), classSection: document.getElementById('lfClass').value.trim(), category: classify(description.value), photo: reader.result, created: new Date().toISOString(), matches: [] };
+            report.matches = findMatches(report).map(function (m) { return { description: m.item.description, location: m.item.location, score: m.score }; });
+            reports.unshift(report);
+            try { localStorage.setItem(storageKey, JSON.stringify(reports)); }
+            catch (err) { reports.shift(); message.textContent = 'Could not save this report. Browser storage may be full; try a smaller photo.'; return; }
+            message.textContent = report.matches.length ? 'Report saved. The smart helper found a possible match below.' : 'Report saved on this device. No close match yet.';
+            form.reset(); chosenPhoto = null; tip.classList.remove('is-visible'); tip.textContent = '';
+            photoPreview.removeAttribute('src'); photoPreview.hidden = true; dropCopy.hidden = false; dropzone.classList.remove('has-photo');
+            if (previewUrl) URL.revokeObjectURL(previewUrl); previewUrl = '';
+            render();
+          };
+          reader.onerror = function () { message.textContent = 'The photo could not be read. Please try another image.'; };
+          reader.readAsDataURL(file);
+        });
+        search.addEventListener('input', render); filter.addEventListener('change', render); render();
+      })();
+
       /* ---------- 2d. ICSK AI: lightweight assistant with a school-rules content filter ---------- */
       (function initIcskAI() {
         var card = document.getElementById('icskAiCard');
@@ -2128,9 +2436,11 @@
         var form = document.getElementById('aiChatForm');
         var input = document.getElementById('aiChatInput');
         var sendBtn = document.getElementById('aiChatSend');
+        var statusLabel = document.getElementById('aiChatStatus');
         if (!card || !overlay || !form) return;
 
         var started = false;
+        if (statusLabel) statusLabel.textContent = 'On-device helper';
 
         // Anything matching these signals goes against school rules and gets declined.
         var blockedPatterns = [
@@ -2142,18 +2452,6 @@
           /\b(bribe|bribery)\w*/i
         ];
         var selfHarmPattern = /\b(suicide|self\s*harm|hurt myself|kill myself|self-harm)\b/i;
-
-        var faqRules = [
-          { test: /\badmission/i, reply: "Admissions for the 2026\u20132027 session are open! Tap the Admissions tile on the home page, or call the school office at +965 2562 9583 to start your application." },
-          { test: /\bfee|payment|k-?net/i, reply: "Fees can be paid securely through the Fee Payment tile using the K-Net gateway. It covers term fees, transport fees, and other dues." },
-          { test: /\btransport|bus/i, reply: "You can check bus routes, timings, and safety guidelines under the Transport tile on the home page." },
-          { test: /\buniform|book/i, reply: "School uniforms and textbooks can be ordered through the Uniform & Books tile ahead of the new academic year." },
-          { test: /\bcloud|attendance|homework|report card|exam schedule/i, reply: "ICSK Cloud gives you real-time attendance, homework, exam schedules, and report cards. You can open it from the ICSK Cloud tile, or download the app using the App Store / Google Play buttons further down the page." },
-          { test: /\bcircular|notice/i, reply: "Latest circulars and official notices are available under the Circulars tile." },
-          { test: /\bcontact|phone|email|call/i, reply: "You can reach the school office at +965 2562 9583 or info@icsk-kw.com." },
-          { test: /\btiming|hour|schedule/i, reply: "For exact class timings, please check the latest circular or contact your campus office \u2014 timings can vary slightly by campus." },
-          { test: /\b(hi|hello|hey)\b/i, reply: "Hello! I'm ICSK AI. I can help with questions about admissions, fees, transport, uniforms, and ICSK Cloud. What would you like to know?" }
-        ];
 
         function scrollToBottom() {
           body.scrollTop = body.scrollHeight;
@@ -2190,7 +2488,7 @@
           if (row) row.remove();
         }
 
-        function getReply(userText) {
+        function getSafetyReply(userText) {
           if (selfHarmPattern.test(userText)) {
             return {
               text: "I'm really glad you told me. That's bigger than something I can help with here \u2014 please talk to your school counsellor, a teacher, or a trusted adult right away. If it's urgent, contact the school office at +965 2562 9583.",
@@ -2205,15 +2503,51 @@
               };
             }
           }
-          for (var j = 0; j < faqRules.length; j++) {
-            if (faqRules[j].test.test(userText)) {
-              return { text: faqRules[j].reply, blocked: false };
-            }
+          return null;
+        }
+
+        var localFaq = [
+          { test: /\badmission|enrol|enroll|registration/i, reply: 'For current admission requirements and availability, use the Admissions tile or contact the school office. Details can change by campus and academic year.' },
+          { test: /\bfee|fees|payment|k-?net|tuition/i, reply: 'Use the Fee Payment tile for the school’s payment portal. I can’t see your account or verify balances—contact the school office for account-specific help.' },
+          { test: /\btransport|bus|route|pickup/i, reply: 'Open the Transport tile for bus routes and safety information. For a specific route or timing, confirm with your campus office.' },
+          { test: /\buniform|book|textbook|stationery/i, reply: 'The Uniform & Books tile has the portal information for school supplies. Please confirm current availability with the school.' },
+          { test: /\bcloud|attendance|homework|report card|exam schedule/i, reply: 'ICSK Cloud is the school portal for items such as attendance, homework, schedules, and report cards. Use the ICSK Cloud tile or the App Store and Google Play buttons on this page.' },
+          { test: /\bcircular|notice|announcement/i, reply: 'Open the Circulars tile for school notices. For the latest official update, check the school’s official channels.' },
+          { test: /\bcampus|branch|location|where is the school/i, reply: 'This portal lists the Salmiya, Khaitan, and Amman campuses. Choose the Campuses section for the branch details shown here.' },
+          { test: /\b(contact|phone|email|call|office)/i, reply: 'The contact details shown on this page are +965 2562 9583 and info@icsk-kw.com. Please verify them on the official school website if you need the latest information.' },
+          { test: /\b(timing|hour|schedule|school day)/i, reply: 'Class times can vary by campus and may change. Check the latest official circular or ask your campus office.' },
+          { test: /\b(hi|hello|hey|good morning|good afternoon)\b/i, reply: 'Hello! I can help with admissions, fees, transport, uniforms, ICSK Cloud, circulars, campus information, and Lost & Found. What do you need?' },
+          { test: /\b(thanks|thank you|thx)\b/i, reply: 'You’re welcome! Ask me about a school service or Lost & Found any time.' }
+        ];
+
+        function findLocalReports(userText) {
+          var reports = [];
+          try { reports = JSON.parse(localStorage.getItem('icskLostFoundReportsV1') || '[]'); } catch (e) { reports = []; }
+          if (!Array.isArray(reports) || !reports.length) return 'I don’t see any Lost & Found reports saved in this browser yet. Open the Lost & Found tile to add or browse reports.';
+          var queryWords = (userText.toLowerCase().match(/[a-z0-9]+/g) || []).filter(function (w) { return w.length > 2 && !/^(lost|found|missing|misplaced|item|have|has|the|and|for|with|where|is|my|a)$/.test(w); });
+          var ranked = reports.map(function (report) {
+            var haystack = [report.description, report.location, report.category].join(' ').toLowerCase();
+            var hits = queryWords.filter(function (word) { return haystack.indexOf(word) >= 0; }).length;
+            return { report: report, hits: hits };
+          }).sort(function (a, b) { return b.hits - a.hits; });
+          var matches = ranked.filter(function (item) { return !queryWords.length || item.hits > 0; }).slice(0, 3);
+          if (!matches.length) return 'I couldn’t find a close match in the Lost & Found reports saved on this device. Try a color, item type, or location—or open the Lost & Found tile to browse all reports.';
+          return 'Here are the closest reports saved on this device:\n' + matches.map(function (item) {
+            var r = item.report;
+            return '• ' + (r.type === 'lost' ? 'Lost' : 'Found') + ': ' + r.description + ' — ' + r.location + ' (' + r.classSection + ')';
+          }).join('\n') + '\nThese reports are local to this browser and may not include other students’ reports.';
+        }
+
+        function getLocalReply(userText) {
+          var safety = getSafetyReply(userText);
+          if (safety) return safety;
+          if (/\b(lost|found|missing|misplaced|recover|lost and found|lost & found)\b/i.test(userText)) {
+            return { text: findLocalReports(userText), blocked: false };
           }
-          return {
-            text: "I'm still learning that one! For detailed help, please check the relevant tile on the home page or contact the school office at +965 2562 9583.",
-            blocked: false
-          };
+          for (var i = 0; i < localFaq.length; i++) {
+            if (localFaq[i].test.test(userText)) return { text: localFaq[i].reply, blocked: false };
+          }
+          return { text: 'I can help with admissions, fees, transport, uniforms and books, ICSK Cloud, circulars, campus information, or Lost & Found. Try asking about one of those, or contact the school for information I don’t have.', blocked: false };
         }
 
         function openChat() {
@@ -2221,7 +2555,7 @@
           overlay.setAttribute('aria-hidden', 'false');
           if (!started) {
             started = true;
-            addMessage("Hi, I'm ICSK AI \uD83D\uDC4B I can answer general questions about admissions, fees, transport, uniforms, and ICSK Cloud. I always follow ICSK's school rules.", 'bot');
+            addMessage("Hi, I'm ICSK AI \uD83D\uDC4B I'm an on-device school helper—ask about school services, or ask me to look for a lost item in this browser's reports.", 'bot');
           }
           setTimeout(function () { input.focus(); }, 300);
         }
@@ -2250,13 +2584,11 @@
           input.value = '';
           sendBtn.disabled = true;
           showTyping();
+          var reply = getLocalReply(text);
           setTimeout(function () {
-            hideTyping();
-            var result = getReply(text);
-            addMessage(result.text, 'bot', result.blocked);
-            sendBtn.disabled = false;
-            input.focus();
-          }, 500 + Math.random() * 400);
+            hideTyping(); addMessage(reply.text, 'bot', reply.blocked);
+            sendBtn.disabled = false; input.focus();
+          }, 300 + Math.random() * 250);
         });
       })();
 
