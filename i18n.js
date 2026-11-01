@@ -127,8 +127,8 @@
     dictionaries[language.code] = {};
     Object.keys(rows).forEach(key => { dictionaries[language.code][key] = rows[key][index]; });
   });
-  const originals = new WeakMap();
-  const attributeOriginals = new WeakMap();
+  const originals = new Map();
+  const attributeOriginals = new Map();
   let active = 'en';
 
   function translate(value) {
@@ -140,9 +140,9 @@
     const clean = source.trim();
     if (!clean) return;
     const result = translate(clean);
-    if (result === clean) return;
     const offset = source.indexOf(clean);
-    node.nodeValue = source.slice(0, offset) + result + source.slice(offset + clean.length);
+    const next = source.slice(0, offset) + result + source.slice(offset + clean.length);
+    if (node.nodeValue !== next) node.nodeValue = next;
   }
   function translateAttributes(root) {
     const list = [];
@@ -173,8 +173,20 @@
     }
     translateAttributes(root);
   }
+  function restoreOriginals() {
+    originals.forEach((source, node) => {
+      if (node.isConnected && node.nodeValue !== source) node.nodeValue = source;
+    });
+    attributeOriginals.forEach((saved, element) => {
+      if (!element.isConnected) return;
+      Object.keys(saved).forEach(attribute => {
+        if (element.hasAttribute(attribute)) element.setAttribute(attribute, saved[attribute]);
+      });
+    });
+  }
   function applyLanguage(code) {
-    active = dictionaries[code] ? code : 'en';
+    active = code === 'en' || dictionaries[code] ? code : 'en';
+    restoreOriginals();
     document.documentElement.lang = active;
     document.documentElement.dir = active === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.dataset.language = active;
